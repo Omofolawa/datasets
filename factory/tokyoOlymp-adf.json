@@ -1,0 +1,9 @@
+{
+	"name": "tokyoOlymp-adf",
+	"location": "ukwest",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "591255cc-951b-4953-9480-1e0713c63fa4",
+		"tenantId": "7508fa4a-978e-4ce6-a8a7-0394c2c777df"
+	}
+}
