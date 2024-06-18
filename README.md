@@ -1,43 +1,30 @@
-This is an end-to-end data engineering project 
+This project involved the following steps:
 
-1. Sourced a dataset from Kaggle and converted it to CSV format.
-2. Saved the dataset in a Git repository.
-3. Created an Azure Resource Group.
-4. Created a Storage account using Data Lake Gen 2.
-5. Created two directories in the Storage account: raw-data and transformed-data.
-6. Ingested data from Git using an HTTP request.
+- A dataset was sourced from Kaggle and converted to CSV format.
+- The CSV dataset was stored in a Git repository.
+- An Azure Resource Group was created.
+- A Storage account was set up using Data Lake Gen 2.
+- Two directories, namely raw-data and transformed-data, were created within the Storage account.
+- Data was ingested into Azure from Git using an HTTP request.
 
-Step 1: Create an Azure Data Factory
+Additionally, the following steps were undertaken to implement the project:
 
-- Go to the Azure portal and create a new Data Factory resource.
-- Fill in the required details, such as name, resource group, and location.
+- Azure Data Factory was created by accessing the Azure portal and specifying details like name, resource group, and location.
+- A linked service for the input task was configured within the Azure Data Factory portal under "Author & Monitor" > "Linked Services" > "HTTP", with details such as name, Git repository URL, and authentication method.
+- Datasets were defined for both input and output purposes through "Author & Monitor" > "Datasets" > "New Dataset" > "CSV", linking to the HTTP linked service and specifying the raw data file path.
+- A data pipeline was constructed using the "Copy data" method within "Author & Monitor" > "Pipelines" > "New Pipeline" > "Copy data", where source data from the input dataset was copied to the raw-data directory in Data Lake Gen 2.
+- The pipeline configuration involved selecting the individual raw data files from the input dataset for the "Copy data" operation.
 
-Step 2: Create a linked service for the input task
+Following the ingestion and storage of raw data, additional steps were taken for data transformation and analysis:
 
-- In the ADF portal, click on "Author & Monitor" and then "Linked Services".
-- Click on "New Linked Service" and select "HTTP".
-- Fill in the required details, such as name, URL (your Git repository URL), and authentication method.
+- **Data Transformation using Databricks:**
+  - Data from the raw-data directory in Data Lake Gen 2 was accessed using Databricks.
+  - Transformation tasks, such as data cleaning, feature engineering, and aggregation, were performed using Databricks notebooks.
+  - Transformed data was saved back to the Data Lake Gen 2 in the transformed-data directory.
 
-Step 3: Create datasets for input and output
+- **Data Analysis using Azure Synapse Analytics:**
+  - Azure Synapse Analytics was utilized to further analyze the transformed data.
+  - Synapse SQL queries and serverless SQL pools were used to query and analyze the transformed datasets.
+  - Advanced analytics tasks, such as machine learning model training and predictive analytics, were conducted using the integrated capabilities of Azure Synapse Analytics.
 
-- Click on "Author & Monitor" and then "Datasets".
-- Click on "New Dataset" and select "CSV".
-- Fill in the required details, such as name, linked service (the HTTP linked service you created), and file path (the raw data file path).
-
-Step 4: Create a data pipeline using the Copy data method
-
-- Click on "Author & Monitor" and then "Pipelines".
-- Click on "New Pipeline" and select "Copy data".
-- Fill in the required details, such as name, source (the input dataset), and sink (the raw-data directory in the Data Lake Gen 2).
-- Select the Copy data method for individual raw data files.
-
-Step 5: Assign the source and sink destinations
-
-- In the pipeline, click on the "Source" tab and select the input dataset.
-- Click on the "Sink" tab and select the raw-data directory in the Data Lake Gen 2.
-
-Step 6: Copy data method for individual raw data files
-
-- In the pipeline, click on the "Copy data" tab.
-- Select the "File" option and choose the individual raw data files from the input dataset.
-
+These steps encompassed the end-to-end process of executing the data engineering project, integrating data ingestion, storage, transformation using Databricks, and advanced analytics using Azure Synapse Analytics.
